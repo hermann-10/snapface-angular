@@ -27,7 +27,8 @@ export class AppComponent implements OnInit {
       'Ok voici un nouvel élément !',
       'https://cdn.pixabay.com/photo/2014/06/28/22/14/five-elements-379106__480.jpg',
       new Date(),
-      0
+      0,
+      'Genève'
     );
 
     this.myLastSnap = new FaceSnap(
