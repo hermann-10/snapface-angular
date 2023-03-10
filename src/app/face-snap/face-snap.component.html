@@ -30,5 +30,6 @@
       >🤌 {{ faceSnap.snaps }}</span
     >
   </p>
+  <p>Prix de la photo {{ 100.5 | currency : "CHF" }}</p>
   <p *ngIf="faceSnap.location">Photo prise à {{ faceSnap.location }}</p>
 </div>
