@@ -1,6 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FaceSnap } from '../models/face-snap.model';
-import { FaceSnapsService } from '../services/face-snaps.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-face-snap',
@@ -8,9 +6,7 @@ import { FaceSnapsService } from '../services/face-snaps.service';
   styleUrls: ['./face-snap.component.scss'],
 })
 export class FaceSnapComponent implements OnInit {
-  faceSnaps!: FaceSnap[];
-
-  constructor(private faceSnapsService: FaceSnapsService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 }
