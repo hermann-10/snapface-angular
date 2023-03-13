@@ -1,11 +1,11 @@
 <div
-  *ngFor="let faceSnap of faceSnaps"
+  *ngFor="let faceSnap of faceSnaps; let i = index"
   class="face-snap-card"
   [ngClass]="{ snapped: buttonText === 'Oops, unSnap!' }"
 >
   <h2>{{ faceSnap.title | uppercase }}</h2>
   <p>Mis en ligne le {{ faceSnap.createdDate | date : "dd/MM/yy, à HH:mm" }}</p>
-  <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" />
+  <!-- <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" /> -->
   <p>{{ faceSnap.description }}</p>
   <p>
     <button (click)="onSnap()">{{ buttonText }}</button>
@@ -13,6 +13,10 @@
       >🤌 {{ faceSnap.snaps }}</span
     >
   </p>
-  <p>Prix de la photo {{ 100.5 | currency : "CHF" }}</p>
-  <p *ngIf="faceSnap.location">Photo prise à {{ faceSnap.location }}</p>
+  <!--<p>Prix de la photo {{ 100.5 | currency : "CHF" }}</p>
+  <p *ngIf="faceSnap.location">Photo prise à {{ faceSnap.location }}</p>-->
+
+  <!--<button (click)="onViewFaceSnap()">VIEW</button>-->
+
+  <a [routerLink]="[i]" class="btn btn-primary">Voir plus</a>
 </div>
