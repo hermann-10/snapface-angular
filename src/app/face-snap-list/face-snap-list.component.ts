@@ -9,8 +9,8 @@ import { FaceSnapsService } from '../services/face-snaps.service';
 })
 export class FaceSnapListComponent implements OnInit {
   faceSnaps!: FaceSnap[];
-  buttonText!: string;
   @Input() faceSnap!: FaceSnap;
+  buttonText!: string;
 
   constructor(private faceSnapsService: FaceSnapsService) {}
 
@@ -20,12 +20,13 @@ export class FaceSnapListComponent implements OnInit {
   }
 
   onSnap() {
-    console.log('click');
     if (this.buttonText === 'Oh Snap!') {
+      //this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'snap');
       //this.faceSnap.snaps++;
       this.buttonText = 'Oops, unSnap!';
     } else {
       //this.faceSnap.snaps--;
+      //this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'unsnap');
       this.buttonText = 'Oh Snap!';
     }
   }

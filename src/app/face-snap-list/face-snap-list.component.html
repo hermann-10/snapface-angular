@@ -1,7 +1,7 @@
 <div
   *ngFor="let faceSnap of faceSnaps; let i = index"
   class="face-snap-card"
-  [ngClass]="{ snapped: buttonText === 'Oops, unSnap!' }"
+
 >
   <h2>{{ faceSnap.title | uppercase }}</h2>
   <p>Mis en ligne le {{ faceSnap.createdDate | date : "dd/MM/yy, à HH:mm" }}</p>
@@ -9,7 +9,7 @@
   <p>{{ faceSnap.description }}</p>
   <p>
     <button (click)="onSnap()">{{ buttonText }}</button>
-    <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }"
+    <span   [ngClass]="{ snapped: buttonText === 'Oops, unSnap!' }" [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }"
       >🤌 {{ faceSnap.snaps }}</span
     >
   </p>
