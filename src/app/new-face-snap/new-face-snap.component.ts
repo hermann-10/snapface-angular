@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { FaceSnap } from '../models/face-snap.model';
 
@@ -16,9 +16,9 @@ export class NewFaceSnapComponent implements OnInit {
 
   ngOnInit(): void {
     this.snapForm = this.formBuilder.group({
-      title: [null],
-      description: [null],
-      imageUrl: [null],
+      title: [null, [Validators.required]],
+      description: [null, [Validators.required]],
+      imageUrl: [null, [Validators.required]],
       location: [null],
     });
 
