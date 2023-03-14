@@ -11,16 +11,28 @@ import { FaceSnap } from '../models/face-snap.model';
 export class NewFaceSnapComponent implements OnInit {
   snapForm!: FormGroup;
   faceSnapPreview$!: Observable<FaceSnap>;
+  urlRegex!: RegExp;
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.snapForm = this.formBuilder.group({
-      title: [null, [Validators.required]],
-      description: [null, [Validators.required]],
-      imageUrl: [null, [Validators.required]],
-      location: [null],
-    });
+    this.urlRegex =
+      /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)/;
+    
+      this.snapForm = this.formBuilder.group(
+        {
+          title: [null, [Validators.required]],
+          description: [null, [Validators.required]],
+          imageUrl: [
+            null,
+            [Validators.required, Validators.pattern(this.urlRegex)],
+          ],
+          location: [null],
+        },
+        {
+          updateOn: 'blur',
+        }
+      );
 
     //valueChanges is a observable. The ValueChanges is an event raised by the Angular forms whenever the value of the FormControl, FormGroup, or FormArray changes.
     this.faceSnapPreview$ = this.snapForm.valueChanges.pipe(
