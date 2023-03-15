@@ -7,7 +7,6 @@ import { FaceSnap } from '../models/face-snap.model';
   providedIn: 'root',
 })
 export class FaceSnapsService {
-
   constructor(private http: HttpClient) {}
 
   getAllFaceSnaps(): Observable<FaceSnap[]> {
@@ -16,7 +15,7 @@ export class FaceSnapsService {
 
   getFaceSnapById(faceSnapId: number): Observable<FaceSnap> {
     return this.http.get<FaceSnap>(
-      `http://localhost:3000/facesnaps/${faceSnapId}` 
+      `http://localhost:3000/facesnaps/${faceSnapId}`
     );
   }
 
@@ -38,9 +37,12 @@ export class FaceSnapsService {
     );
   }
 
-  addFaceSnap(formValue: { title: string, description: string, imageUrl: string, location?: string }):
-  Observable<FaceSnap>
-  {
+  addFaceSnap(formValue: {
+    title: string;
+    description: string;
+    imageUrl: string;
+    location?: string;
+  }): Observable<FaceSnap> {
     return this.getAllFaceSnaps().pipe(
       map((facesnaps) => [...facesnaps].sort((a, b) => a.id - b.id)), //On retourne un tableau trié par ID pour s'assurer que le dernier élément du tableau possède l'ID le plus élevé.
       map((sortedFacesnaps) => sortedFacesnaps[sortedFacesnaps.length - 1]), //On retourne ensuite le dernier élément de ce tableau.

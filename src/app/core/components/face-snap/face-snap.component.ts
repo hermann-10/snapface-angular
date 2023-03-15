@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FaceSnap } from '../models/face-snap.model';
-import { FaceSnapsService } from '../services/face-snaps.service';
+import { FaceSnap } from '../../models/face-snap.model';
+import { FaceSnapsService } from '../../services/face-snaps.service';
 
 @Component({
   selector: 'app-face-snap',
@@ -13,6 +13,5 @@ export class FaceSnapComponent implements OnInit {
 
   constructor(private faceSnapsService: FaceSnapsService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

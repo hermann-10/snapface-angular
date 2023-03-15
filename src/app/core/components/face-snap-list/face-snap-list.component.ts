@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
-import { FaceSnap } from '../models/face-snap.model';
-import { FaceSnapsService } from '../services/face-snaps.service';
+import { FaceSnap } from '../../models/face-snap.model';
+import { FaceSnapsService } from '../../services/face-snaps.service';
 
 @Component({
   selector: 'app-face-snap-list',
@@ -14,7 +14,10 @@ export class FaceSnapListComponent implements OnInit {
   @Input() faceSnap!: FaceSnap;
   buttonText!: string;
 
-  constructor(private faceSnapsService: FaceSnapsService, private router: Router) {}
+  constructor(
+    private faceSnapsService: FaceSnapsService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.buttonText = 'Oh Snap!';
