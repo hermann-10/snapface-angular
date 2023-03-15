@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { FaceSnapsModule } from './face-snaps/face-snaps.module';
 
 @NgModule({
   declarations: [
@@ -13,9 +12,7 @@ import { FaceSnapsModule } from './face-snaps/face-snaps.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule,
-    FaceSnapsModule
-    
+    CoreModule,    
   ],
   providers: [],
   bootstrap: [AppComponent],
