@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, tap } from 'rxjs';
 import { FaceSnap } from '../models/face-snap.model';
 import { FaceSnapsService } from '../services/face-snaps.service';
 
@@ -8,26 +10,18 @@ import { FaceSnapsService } from '../services/face-snaps.service';
   styleUrls: ['./face-snap-list.component.scss'],
 })
 export class FaceSnapListComponent implements OnInit {
-  faceSnaps!: FaceSnap[];
+  faceSnaps$!: Observable<FaceSnap[]>;
   @Input() faceSnap!: FaceSnap;
   buttonText!: string;
 
-  constructor(private faceSnapsService: FaceSnapsService) {}
+  constructor(private faceSnapsService: FaceSnapsService, private router: Router) {}
 
   ngOnInit() {
     this.buttonText = 'Oh Snap!';
-    this.faceSnaps = this.faceSnapsService.faceSnaps;
+    this.faceSnaps$ = this.faceSnapsService.getAllFaceSnaps();
   }
 
-  onSnap() {
-    if (this.buttonText === 'Oh Snap!') {
-      //this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'snap');
-      //this.faceSnap.snaps++;
-      this.buttonText = 'Oops, unSnap!';
-    } else {
-      //this.faceSnap.snaps--;
-      //this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'unsnap');
-      this.buttonText = 'Oh Snap!';
-    }
+  onViewFaceSnap(id: any) {
+    this.router.navigateByUrl(`facesnaps/${id}`);
   }
 }

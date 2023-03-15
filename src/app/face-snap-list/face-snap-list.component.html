@@ -1,22 +1,12 @@
+<!-- To subscribe to an observable from the template, we use the async pipe -->
 <div
-  *ngFor="let faceSnap of faceSnaps; let i = index"
+  *ngFor="let faceSnap of faceSnaps$ | async;"
   class="face-snap-card"
-
 >
   <h2>{{ faceSnap.title | uppercase }}</h2>
-  <p>Mis en ligne le {{ faceSnap.createdDate | date : "dd/MM/yy, à HH:mm" }}</p>
-  <!-- <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" /> -->
   <p>{{ faceSnap.description }}</p>
-  <p>
-    <button (click)="onSnap()">{{ buttonText }}</button>
-    <span   [ngClass]="{ snapped: buttonText === 'Oops, unSnap!' }" [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }"
-      >🤌 {{ faceSnap.snaps }}</span
-    >
-  </p>
-  <!--<p>Prix de la photo {{ 100.5 | currency : "CHF" }}</p>
-  <p *ngIf="faceSnap.location">Photo prise à {{ faceSnap.location }}</p>-->
+  <button (click)="onViewFaceSnap(faceSnap.id)">VIEW</button>
 
-  <!--<button (click)="onViewFaceSnap()">VIEW</button>-->
+  <!--<a routerLink="/facesnaps/{{faceSnap.id}}" class="btn btn-primary">Voir plus</a>-->
 
-  <a [routerLink]="[i]" class="btn btn-primary">Voir plus</a>
 </div>
